@@ -18,36 +18,70 @@ else
 fi
 
 echo "---Update Server---"
-if [ "${USERNAME}" == "" ]; then
-    if [ "${VALIDATE}" == "true" ]; then
-    	echo "---Validating installation---"
-        ${STEAMCMD_DIR}/steamcmd.sh \
-        +force_install_dir ${SERVER_DIR} \
-        +login anonymous \
-        +app_update ${GAME_ID} validate \
-        +quit
-    else
-        ${STEAMCMD_DIR}/steamcmd.sh \
-        +force_install_dir ${SERVER_DIR} \
-        +login anonymous \
-        +app_update ${GAME_ID} \
-        +quit
-    fi
+if [ "${Beta}" == "True" ]; then
+	if [ "${USERNAME}" == "" ]; then
+	    if [ "${VALIDATE}" == "true" ]; then
+	    	echo "---Validating installation---"
+	        ${STEAMCMD_DIR}/steamcmd.sh \
+	        +force_install_dir ${SERVER_DIR} \
+	        +login anonymous \
+	        +app_update ${GAME_ID} validate \
+	        +quit
+	    else
+	        ${STEAMCMD_DIR}/steamcmd.sh \
+	        +force_install_dir ${SERVER_DIR} \
+	        +login anonymous \
+	        +app_update ${GAME_ID} \
+	        +quit
+	    fi
+	else
+	    if [ "${VALIDATE}" == "true" ]; then
+	    	echo "---Validating installation---"
+	        ${STEAMCMD_DIR}/steamcmd.sh \
+	        +force_install_dir ${SERVER_DIR} \
+	        +login ${USERNAME} ${PASSWRD} \
+	        +app_update ${GAME_ID} -beta beta validate \
+	        +quit
+	    else
+	        ${STEAMCMD_DIR}/steamcmd.sh \
+	        +force_install_dir ${SERVER_DIR} \
+	        +login ${USERNAME} ${PASSWRD} \
+	        +app_update ${GAME_ID} -beta beta \
+	        +quit
+	    fi
+	fi
 else
-    if [ "${VALIDATE}" == "true" ]; then
-    	echo "---Validating installation---"
-        ${STEAMCMD_DIR}/steamcmd.sh \
-        +force_install_dir ${SERVER_DIR} \
-        +login ${USERNAME} ${PASSWRD} \
-        +app_update ${GAME_ID} validate \
-        +quit
-    else
-        ${STEAMCMD_DIR}/steamcmd.sh \
-        +force_install_dir ${SERVER_DIR} \
-        +login ${USERNAME} ${PASSWRD} \
-        +app_update ${GAME_ID} \
-        +quit
-    fi
+	if [ "${USERNAME}" == "" ]; then
+	    if [ "${VALIDATE}" == "true" ]; then
+	    	echo "---Validating installation---"
+	        ${STEAMCMD_DIR}/steamcmd.sh \
+	        +force_install_dir ${SERVER_DIR} \
+	        +login anonymous \
+	        +app_update ${GAME_ID} validate \
+	        +quit
+	    else
+	        ${STEAMCMD_DIR}/steamcmd.sh \
+	        +force_install_dir ${SERVER_DIR} \
+	        +login anonymous \
+	        +app_update ${GAME_ID} \
+	        +quit
+	    fi
+	else
+	    if [ "${VALIDATE}" == "true" ]; then
+	    	echo "---Validating installation---"
+	        ${STEAMCMD_DIR}/steamcmd.sh \
+	        +force_install_dir ${SERVER_DIR} \
+	        +login ${USERNAME} ${PASSWRD} \
+	        +app_update ${GAME_ID} validate \
+	        +quit
+	    else
+	        ${STEAMCMD_DIR}/steamcmd.sh \
+	        +force_install_dir ${SERVER_DIR} \
+	        +login ${USERNAME} ${PASSWRD} \
+	        +app_update ${GAME_ID} \
+	        +quit
+	    fi
+	fi
 fi
 
 echo "---Prepare Server---"
