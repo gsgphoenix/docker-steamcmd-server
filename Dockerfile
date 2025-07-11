@@ -1,4 +1,4 @@
-FROM ich777/debian-baseimage
+CFROM ich777/debian-baseimage
 
 LABEL org.opencontainers.image.authors="admin@minenet.at"
 LABEL org.opencontainers.image.source="https://github.com/ich777/docker-steamcmd-server"
@@ -22,6 +22,7 @@ ENV USERNAME=""
 ENV PASSWRD=""
 ENV USER="steam"
 ENV DATA_PERM=770
+ENV BETA="False"
 
 RUN mkdir $DATA_DIR && \
 	mkdir $STEAMCMD_DIR && \
